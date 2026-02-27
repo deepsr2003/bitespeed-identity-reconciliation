@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: bitespeed-identity-reconciliation
+    env: node
+    region: oregon
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: file:/app/data/dev.db
+      - key: PORT
+        value: 10000
+    disk:
+      enabled: true
+      mountPath: /app/data
+      size: 1
